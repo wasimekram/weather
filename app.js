@@ -10,6 +10,8 @@ const publicDirectoryPath = pth.join(__dirname, './public')
 const viewsPath = pth.join(__dirname, './templates/views')
 const partialsPath = pth.join(__dirname, './templates/partials')
 
+const port = process.env.port || 3000
+
 //handlebars
 app.use(express.static(publicDirectoryPath))
 app.set('view engine', 'hbs')
@@ -57,6 +59,37 @@ app.get('/help', (req, res) => {
         })
 })
 
-app.listen(3000, () => {
-    console.log("Server is running!")
+app.get('/api', (req, res)=>{
+    res.render("api",
+        {
+            title: "Api for recruitment",
+            name:"Wasim"
+        })
+})
+
+app.get('/api/user', (req, res)=>{
+    res.render("api/user",
+        {
+            title: "Api for recruitment",
+            name:"Wasim"
+        })
+})
+app.get('/api/candidate', (req, res)=>{
+    res.render("api/candidate",
+        {
+            title: "Api for recruitment",
+            name:"Wasim"
+        })
+})
+app.get('/api/recruiter', (req, res)=>{
+    res.render("api/recruiter",
+        {
+            title: "Api for recruitment",
+            name:"Wasim"
+        })
+})
+
+
+app.listen(port, () => {
+    console.log("Server is up on port " + port)
 })
