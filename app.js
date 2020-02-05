@@ -3,7 +3,6 @@ const pth = require('path')
 const hbs = require('hbs')
 const geocode = require('./src/utils/geocode')
 const forecast = require('./src/utils/forecast')
-const request = require('request')
 
 const app = express()
 const publicDirectoryPath = pth.join(__dirname, './public')
@@ -70,21 +69,21 @@ app.get('/api', (req, res)=>{
 app.get('/api/user', (req, res)=>{
     res.render("api/user",
         {
-            title: "Api for recruitment",
+            title: "Api for User",
             name:"Wasim"
         })
 })
 app.get('/api/candidate', (req, res)=>{
     res.render("api/candidate",
         {
-            title: "Api for recruitment",
+            title: "Api for Candidate",
             name:"Wasim"
         })
 })
 app.get('/api/recruiter', (req, res)=>{
     res.render("api/recruiter",
         {
-            title: "Api for recruitment",
+            title: "Api for Recruiter",
             name:"Wasim"
         })
 })
