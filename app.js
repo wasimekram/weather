@@ -10,7 +10,7 @@ const publicDirectoryPath = pth.join(__dirname, './public')
 const viewsPath = pth.join(__dirname, './templates/views')
 const partialsPath = pth.join(__dirname, './templates/partials')
 
-const port = process.env.port || 3000
+const port = process.env.PORT || 3000
 
 //handlebars
 app.use(express.static(publicDirectoryPath))
