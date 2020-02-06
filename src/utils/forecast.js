@@ -14,7 +14,7 @@ const forecast = (longitude, latitude, callback) =>{
             callback("Unable to retrieve location", undefined)
         }
         else{
-            callback(undefined, response.body.daily.data[0].summary + "with details "+ response.body.latitude + response.body.longitude)
+            callback(undefined, { "message":response.body.daily.data[0].summary + "with details "+ response.body.latitude + response.body.longitude, "response":response })
         }
     })
 }

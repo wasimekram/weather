@@ -19,7 +19,7 @@ hbs.registerPartials(partialsPath)
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: "About title",
+        title: "About page",
         name: "Wasim"
     })
 })
@@ -40,11 +40,11 @@ app.get('/weather', (req, res) => {
         if (error) {
             return res.send({error})
         }
-        forecast(data.longitude, data.latitude, (error, data) => {
+        forecast(data.longitude, data.latitude, (error, forecastData) => {
             if (error) {
                 return res.send({error})
             }
-            res.send({data})
+            res.send({forecastData, data, "location": req.query.location})
         })
     })
 
@@ -69,7 +69,8 @@ app.get('/api', (req, res)=>{
 app.get('/api/user', (req, res)=>{
     res.render("api/user",
         {
-            title: "Api for User",
+            title: "Api for User"
+,
             name:"Wasim"
         })
 })

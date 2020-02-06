@@ -14,7 +14,7 @@ const geocode = (location, callback) => {
             callback("Unable to retrieve location details", undefined)
         }
         else{
-            callback(undefined, {"place_name": response.body.features[0].place_name, "latitude": response.body.features[0].center[0], "longitude": response.body.features[0].center[1]})
+            callback(undefined, {"place_name": response.body.features[0].place_name, "latitude": response.body.features[0].center[0], "longitude": response.body.features[0].center[1], "response": response})
         }
     })
 }

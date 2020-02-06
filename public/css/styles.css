@@ -53,3 +53,10 @@ button {
     color: white;
     padding: 8px;
 }
+
+#message-1, #message-2 {
+    color: #333333;
+    font-family: arial;
+    margin: 0 auto;
+    background: #cccccc;
+}

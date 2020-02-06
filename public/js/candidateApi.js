@@ -1,11 +1,9 @@
 console.log("hello")
 
-const input = document.querySelector('input[name="userEmail"]')
-const userForm = document.querySelector('form')
-const userName = document.querySelector('#userName')
-const userID = document.querySelector('#userID')
-const userPassword = document.querySelector('#userPassword')
-const userEmail = document.querySelector('#userEmail')
+const cID = document.querySelector('#cID')
+const cResume = document.querySelector('#cResume')
+const cSkills = document.querySelector('#cSkills')
+const cJobID = document.querySelector('#cJobID')
 const messageOne = document.querySelector('#messageOne')
 const messageTwo = document.querySelector('#messageTwo')
 let query = {}
@@ -14,8 +12,8 @@ userForm.addEventListener('submit', (e)=>{
     e.preventDefault()
     console.log("Hello")
 
-    messageOne.textContent = messageOne.textContent + "     " + input.value
-    query = { userName:userName.value, userID:userID.value, userPassword:userPassword.value, userEmail:userEmail.value}
+    messageOne.textContent = "Candidate details are: "
+    query = { cID: cID.value, cResume:cResume.value, cSkills:cSkills.value, cJobID:cJobID.value }
     messageTwo.textContent= JSON.stringify(query)
 
 })
