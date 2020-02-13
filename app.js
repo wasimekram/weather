@@ -90,7 +90,7 @@ app.get('/api/recruiter', (req, res) => {
 });
 
 app.get('/billing', (req, res) => {
-    res.render("billing",
+    res.render("billing/create",
         {
             title: "Billing",
             name: "Wasim"

@@ -5,6 +5,22 @@
     {{> htmldependencies }}
     <link rel="stylesheet" href="/css/styles.css">
     <title>Create Form</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("select").change(function(){
+                $(this).find("option:selected").each(function(){
+                    var optionValue = $(this).attr("value");
+                    if(optionValue){
+                        $(".box").not("." + optionValue).hide();
+                        $("." + optionValue).show();
+                    } else{
+                        $(".box").hide();
+                    }
+                });
+            }).change();
+        });
+    </script>
 </head>
 <body>
 
@@ -16,133 +32,193 @@
     <div class="row">
         <div class="col-4">
             <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Talview</a>
-                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Client</a>
-                </div>
-        </div>
-    </div>
-
-    <br>
-
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Expense Category
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Food</a>
-            <a class="dropdown-item" href="#">Travel</a>
-            <a class="dropdown-item" href="#">Stay</a>
-            <a class="dropdown-item" href="#">Other</a>
-        </div>
-    </div>
-    <div class="jumbotron">
-
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupFileAddon01">Bills And Invoice</span>
-        </div>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile01"
-                   aria-describedby="inputGroupFileAddon01">
-            <label class="custom-file-label" for="inputGroupFile01">File Browse</label>
-        </div>
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Amount</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-
-    <input size="16" type="text" value="2020-02-11 18:45" readonly class="form_datetime">
-
-    <script type="text/javascript">
-        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
-    </script>
-    </div>
-
-    <div class="alert alert-primary" role="alert">
-        Food
-    </div>
-    <div class="jumbotron">
-
-
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Number of Diners</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-    </div>
-    <div class="alert alert-primary" role="alert">
-        Travel
-    </div>
-    <div class="jumbotron">
-
-
-
-    <div class="row">
-        <div class="col-4">
-            <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Cab</a>
-                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Train</a>
-                <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Bus</a>
-                <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Flight</a>
-                <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Other</a>
+                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
+                   href="#list-home" role="tab" aria-controls="home">Talview</a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                   href="#list-profile" role="tab" aria-controls="profile">Client</a>
             </div>
         </div>
     </div>
-    <br>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">From :</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">To :</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-    </div>
 
-    <div class="alert alert-primary" role="alert">
-        Stay
-    </div>
+    <br>
+    <div>
+        <select class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            <option>Expense Category</option>
+            <option value="food">Food</option>
+            <option value="travel">Travel</option>
+            <option value="stay">Stay</option>
+            <option value="other">Other</option>
+        </select>
+    </div><br>
+
+    <!--<div class="button dropdown">
+        &lt;!&ndash;<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Expense Category
+            </button>&ndash;&gt;
+        <select id="colorselector" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+
+            &lt;!&ndash;<a class="dropdown-item" href="#">Food</a>
+            <a class="dropdown-item" href="#">Travel</a>
+            <a class="dropdown-item" href="#">Stay</a>
+            <a class="dropdown-item" href="#">Other</a>&ndash;&gt;
+
+            <option class="dropdown-item" value="food">Food</option>
+            <option class="dropdown-item" value="travel">Travel</option>
+            <option class="dropdown-item" value="stay">Stay</option>
+            <option class="dropdown-item" value="other">Other</option>
+        </select>
+    </div>-->
+
     <div class="jumbotron">
 
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Bills And Invoice</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                       aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">File Browse</label>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Amount</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="form-group"> <!-- Date input -->
+            <label class="control-label" for="date">Date</label>
+            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+        </div>
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">From date</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">To date</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        <script>
+            $(document).ready(function(){
+                var date_input=$('input[name="date"]'); //our date input has the name "date"
+                var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+                var options={
+                    format: 'mm/dd/yyyy',
+                    container: container,
+                    todayHighlight: true,
+                    autoclose: true,
+                };
+                date_input.datepicker(options);
+            })
+        </script>
+        <input id="datepicker" width="270" />
+        <script>
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap'
+            });
+        </script>
     </div>
-    <br>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Place of stay</span>
+    <div class="output">
+        <div id="food" class="food box">
+            <div class="alert alert-primary" role="alert">
+                Food
+            </div>
+            <div class="jumbotron">
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Number of Diners</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default">
+                </div>
+            </div>
         </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div><br>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Destination/City/State/Country</span>
+        <div id="travel" class="travel box">
+            <div class="alert alert-primary" role="alert">
+                Travel
+            </div>
+            <div class="jumbotron">
+
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action active" id="list-home-list"
+                               data-toggle="list"
+                               href="#list-home" role="tab" aria-controls="home">Cab</a>
+                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                               href="#list-profile" role="tab" aria-controls="profile">Train</a>
+                            <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list"
+                               href="#list-home" role="tab" aria-controls="home">Bus</a>
+                            <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list"
+                               href="#list-home" role="tab" aria-controls="home">Flight</a>
+                            <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list"
+                               href="#list-home" role="tab" aria-controls="home">Other</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">From :</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">To :</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default">
+                </div>
+            </div>
         </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
+        <div id="stay" class="stay box">
+            <div class="alert alert-primary" role="alert">
+                Stay
+            </div>
+            <div class="jumbotron">
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">From date</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">To date</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Place of stay</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"
+                              id="inputGroup-sizing-default">Destination/City/State/Country</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default">
+                </div>
+            </div>
+        </div>
+        <div id="other" class="other box"></div>
     </div>
     <button type="button" class="btn btn-primary btn-lg">Save</button>
     <button type="button" class="btn btn-secondary btn-lg">Cancel</button>
 
 
     <script src="/js/userApi.js"></script>
+
+    <script src="/js/hide.js"></script>
 
 
     {{>footer}}
